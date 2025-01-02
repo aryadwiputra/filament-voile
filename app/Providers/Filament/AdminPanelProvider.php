@@ -50,6 +50,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \Hasnayeen\Themes\Http\Middleware\SetTheme::class
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
@@ -68,6 +69,11 @@ class AdminPanelProvider extends PanelProvider
                     'default' => 1,
                     'sm' => 2,
                 ]),
+                \Hasnayeen\Themes\ThemesPlugin::make()
+                ->canViewThemesPage(fn () =>
+                // super admin from shield
+                auth()->user()->hasRole('Super Admin')
+                )
             ])
             ->authMiddleware([
                 Authenticate::class,
