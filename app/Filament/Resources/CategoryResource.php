@@ -34,7 +34,7 @@ class CategoryResource extends Resource implements HasShieldPermissions
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
-    protected static ?string $navigationGroup = 'Product Management';
+    protected static ?string $navigationGroup = 'Master Data';
 
     public static function form(Form $form): Form
     {
