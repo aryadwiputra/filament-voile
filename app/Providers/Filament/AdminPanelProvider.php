@@ -17,6 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -76,7 +77,15 @@ class AdminPanelProvider extends PanelProvider
                 ->canViewThemesPage(fn () =>
                 // super admin from shield
                 auth()->user()->hasRole('Super Admin')
-                )
+                ),
+                FilamentGeneralSettingsPlugin::make()
+                ->canAccess(fn() => auth()->user()->hasRole('Super Admin'))
+                ->setSort(3)
+                ->setIcon('heroicon-o-cog')
+                ->setNavigationGroup('Settings')
+                ->setTitle('General Settings')
+                ->setNavigationLabel('General Settings'),
+
             ])
             ->authMiddleware([
                 Authenticate::class,
