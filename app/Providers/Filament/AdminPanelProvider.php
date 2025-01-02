@@ -75,11 +75,10 @@ class AdminPanelProvider extends PanelProvider
                 ]),
                 \Hasnayeen\Themes\ThemesPlugin::make()
                 ->canViewThemesPage(fn () =>
-                // super admin from shield
-                auth()->user()->hasRole('Super Admin')
+                auth()->check() && auth()->user()->hasRole('Super Admin')
                 ),
                 FilamentGeneralSettingsPlugin::make()
-                ->canAccess(fn() => auth()->user()->hasRole('Super Admin'))
+                ->canAccess(fn() => auth()->check() && auth()->user()->hasRole('Super Admin'))
                 ->setSort(3)
                 ->setIcon('heroicon-o-cog')
                 ->setNavigationGroup('Settings')
