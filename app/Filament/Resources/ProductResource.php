@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Filament\Resources\ProductResource\RelationManagers\PhotosRelationManager;
+use App\Filament\Resources\ProductResource\RelationManagers\VariantsRelationManager;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -98,7 +99,8 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
-            PhotosRelationManager::class
+            PhotosRelationManager::class,
+            VariantsRelationManager::class,
         ];
     }
 
