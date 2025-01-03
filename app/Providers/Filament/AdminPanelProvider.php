@@ -33,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 'Master Data',
+                'Inventory',
                 'Transactions',
                 'Users Management',
                 'Settings',
