@@ -32,7 +32,6 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->navigationGroups([
-                'Master Data',
                 'Inventory',
                 'Transactions',
                 'Users Management',
